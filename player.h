@@ -3,7 +3,7 @@
 #include "decoder.h"
 #include <nrf_i2s.h>
 
-#define CHUNK_SIZE 1024*5
+#define CHUNK_SIZE 1024
 
 class Player {
 public:
@@ -57,11 +57,11 @@ public:
             if (mBufferToggle) {
                 NRF_I2S->TXD.PTR = (uint32_t)mAudioBuffer2;
                 NRF_I2S->EVENTS_TXPTRUPD = 0;
-                fillBuffer(mAudioBuffer1);
+                fillBuffer(mAudioBuffer2);
             } else {
                 NRF_I2S->TXD.PTR = (uint32_t)mAudioBuffer1;
                 NRF_I2S->EVENTS_TXPTRUPD = 0;
-                fillBuffer(mAudioBuffer2);
+                fillBuffer(mAudioBuffer1);
             }
             mBufferToggle = !mBufferToggle;
         }
