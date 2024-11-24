@@ -50,6 +50,10 @@ public:
         mVolume = volume;
     }
 
+    bool isPlaying() {
+      return mIsPlaying;
+    }
+
     void handleInterrupt() {
         if (!mIsPlaying) return; // Do nothing if paused
 
